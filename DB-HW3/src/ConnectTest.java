@@ -29,10 +29,7 @@ public class ConnectTest {
                 boolean found;
                 do {
                     found = false;
-                    String query = "SELECT e.Ssn, t.level " +
-                                   "FROM e INNER JOIN tempssn t ON e.Superssn = t.ssn" +
-                                   "WHERE t.level = "
-                                   + currentLevel;
+                    String query = "SELECT e.Ssn, t.level FROM EMPLOYEE e INNER JOIN tempssn t ON e.Superssn = t.ssn WHERE t.level = " + currentLevel;
 
                     try (Statement stmt = con.createStatement();
                          ResultSet rs = stmt.executeQuery(query)) {
@@ -55,13 +52,14 @@ public class ConnectTest {
                     }
                     currentLevel++;
                 } while (found);
+                System.out.println("END OF LIST");
 
                 try (Statement stmt = con.createStatement()) {
                     stmt.execute("DROP TEMPORARY TABLE IF EXISTS tempssn");
-                } catch (SQLException ex) {
-                    System.out.println("SQLException: " + ex.getMessage());
                 }
             }
+        } catch (ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException:" + ex);
         } catch (SQLException ex) {
             System.out.println("SQLException" + ex);
         } catch (Exception ex) {
