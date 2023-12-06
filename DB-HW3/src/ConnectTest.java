@@ -12,27 +12,56 @@ public class ConnectTest {
             String db = "companydb";
             String user = "root";
             String password = getPassword();
-            Connection con = DriverManager.getConnection("jdbc:mysql://"
-                                                         + host + db +
-                                                         "?useSSL=false&serverTimezone=Asia/Seoul", user, password);
 
-            String ssn = readEntry("Enter a Social Security Number: ");
-            Statement stmt = con.createStatement();
-            ResultSet rset = stmt.executeQuery("SELECT LNAME, SALARY FROM EMPLOYEE WHERE SSN = " + ssn);
+            try (Connection con = DriverManager.getConnection("jdbc:mysql://" + host + db +
+                                                              "?useSSL=false&serverTimezone=Asia/Seoul", user, password)) {
+                try (Statement stmt = con.createStatement()) {
+                    stmt.execute("CREATE TEMPORARY TABLE tempssn (ssn CHAR(9), level INT) ENGINE=MEMORY");
+                }
 
-            if (rset.next()) {
-                String lname = rset.getString(1);
-                double salary = rset.getDouble(2);
-                System.out.println(lname + "'s salary is $" + salary);
-            } else {
-                System.out.println("No Employees whose ssn is " + ssn);
+                String initialSSN = readEntry("Enter a ssn: ");
+                try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO tempssn (ssn, level) VALUES (?, 0)")) {
+                    pstmt.setString(1, initialSSN);
+                    pstmt.executeUpdate();
+                }
+
+                int currentLevel = 0;
+                boolean found;
+                do {
+                    found = false;
+                    String query = "SELECT e.Ssn, t.level " +
+                                   "FROM e INNER JOIN tempssn t ON e.Superssn = t.ssn" +
+                                   "WHERE t.level = "
+                                   + currentLevel;
+
+                    try (Statement stmt = con.createStatement();
+                         ResultSet rs = stmt.executeQuery(query)) {
+
+                        while (rs.next()) {
+                            found = true;
+
+                            String subordinateSSN = rs.getString("Ssn");
+                            int subordinateLevel = rs.getInt("level") + 1;
+
+                            System.out.println(subordinateSSN + " at level " + subordinateLevel);
+
+                            try (PreparedStatement pstmt = con.prepareStatement
+                                    ("INSERT INTO tempssn (ssn, level) VALUES (?, ?)")) {
+                                pstmt.setString(1, subordinateSSN);
+                                pstmt.setInt(2, subordinateLevel);
+                                pstmt.executeUpdate();
+                            }
+                        }
+                    }
+                    currentLevel++;
+                } while (found);
+
+                try (Statement stmt = con.createStatement()) {
+                    stmt.execute("DROP TEMPORARY TABLE IF EXISTS tempssn");
+                } catch (SQLException ex) {
+                    System.out.println("SQLException: " + ex.getMessage());
+                }
             }
-
-            rset.close();
-            stmt.close();
-            con.close();
-
-
         } catch (SQLException ex) {
             System.out.println("SQLException" + ex);
         } catch (Exception ex) {
