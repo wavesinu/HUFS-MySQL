@@ -37,7 +37,7 @@ public class ConnectTest {
                         while (rs.next()) {
                             found = true;
 
-                            String subordinateSSN = rs.getString("Ssn");
+                            String subordinateSSN = rs.getString("ssn");
                             int subordinateLevel = rs.getInt("level") + 1;
 
                             System.out.println(subordinateSSN + " at level " + subordinateLevel);
