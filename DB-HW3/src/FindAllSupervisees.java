@@ -2,15 +2,15 @@ import javax.swing.*;
 import java.io.IOException;
 import java.sql.*;
 
-public class ConnectTest {
+public class FindAllSupervisees {
     public static void main(String[] args)
             throws SQLException, IOException {
         try {
             // Connect to the database
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String host = "localhost:3306/";
-            String db = "companydb";
-            String user = "root";
+            String host = "dm.hufs.ac.kr:3306/";
+            String db = "s202103316db";
+            String user = "s202103316";
             String password = getPassword();
 
             try (Connection con = DriverManager.getConnection("jdbc:mysql://" + host + db +
