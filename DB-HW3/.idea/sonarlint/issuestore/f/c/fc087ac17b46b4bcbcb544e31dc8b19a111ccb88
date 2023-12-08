@@ -1,17 +1,15 @@
 
 
-java:S1149-"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(¨âàøÿÿÿÿ8¸ŒºëÃ1
-S
-java:S1854"7Remove this useless assignment to local variable "con".(í€¦8¹ŒºëÃ1
+java:S1149H"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(¨âàøÿÿÿÿ8÷ı‹¾Ä1
 
-java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Ğ†”òúÿÿÿÿ8¹ŒºëÃ1
-D
-java:S1481"(Remove this unused "con" local variable.(í€¦8»ŒºëÃ1
-L	java:S106"+Replace this use of System.out by a logger.(ê™¦áıÿÿÿÿ8»ŒºëÃ1
-L	java:S106"+Replace this use of System.out by a logger.(“Ô¦ûÿÿÿÿ8»ŒºëÃ1
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Ğ†”òúÿÿÿÿ8øı‹¾Ä1
+L
+java:S1197"*Move the array designators [] to the type.(º ìıÿÿÿÿ8ùı‹¾Ä1
+G	java:S106 "+Replace this use of System.out by a logger.(Ï¸ä8ûı‹¾Ä1
+L	java:S106#"+Replace this use of System.out by a logger.(ßôÇşÿÿÿÿ8ûı‹¾Ä1
+L	java:S106-"+Replace this use of System.out by a logger.(ê™¦áıÿÿÿÿ8üı‹¾Ä1
+L	java:S1061"+Replace this use of System.out by a logger.(“Ô¦ûÿÿÿÿ8üı‹¾Ä1
 G
-java:S1659"%Declare "message" on a separate line.(¿¹¬Ïÿÿÿÿÿ8»ŒºëÃ1
-L	java:S106."+Replace this use of System.out by a logger.(Æİêùÿÿÿÿ8¾ŒºëÃ1
-G	java:S106/"+Replace this use of System.out by a logger.(ÚÂâ8¾ŒºëÃ1
-P
-java:S1144+".Remove this unused private "readEntry" method.(¦”Ïøÿÿÿÿ8¿ŒºëÃ1
+java:S16596"%Declare "message" on a separate line.(¿¹¬Ïÿÿÿÿÿ8üı‹¾Ä1
+L	java:S106I"+Replace this use of System.out by a logger.(Æİêùÿÿÿÿ8şı‹¾Ä1
+G	java:S106J"+Replace this use of System.out by a logger.(ÚÂâ8şı‹¾Ä1

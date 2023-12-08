@@ -1,0 +1,14 @@
+
+
+java:S1149W"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(¨âàøÿÿÿÿ8Î¸æ½Ä1
+
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Ğ†”òúÿÿÿÿ8Ğ¸æ½Ä1
+L	java:S106+"+Replace this use of System.out by a logger.(å«’Úøÿÿÿÿ8Ò¸æ½Ä1
+L	java:S1067"+Replace this use of System.out by a logger.(ü«İÈûÿÿÿÿ8Ó¸æ½Ä1
+G	java:S106>"+Replace this use of System.out by a logger.(¦­‚Å8Ó¸æ½Ä1
+L	java:S106@"+Replace this use of System.out by a logger.(ê™¦áıÿÿÿÿ8Ô¸æ½Ä1
+L	java:S106B"+Replace this use of System.out by a logger.(“Ô¦ûÿÿÿÿ8Ô¸æ½Ä1
+G
+java:S1659G"%Declare "message" on a separate line.(¿¹¬Ïÿÿÿÿÿ8Õ¸æ½Ä1
+L	java:S106X"+Replace this use of System.out by a logger.(Æİêùÿÿÿÿ8×¸æ½Ä1
+G	java:S106Y"+Replace this use of System.out by a logger.(ÚÂâ8×¸æ½Ä1
